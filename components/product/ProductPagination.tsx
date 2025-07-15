@@ -7,7 +7,7 @@ type ProductPaginationProps = {
 
 export default function ProductPagination({ page, totalPages }: ProductPaginationProps) {
     const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
-    console.log(pages);
+    
     return (
         <nav className="flex justify-center py-10">
             {page > 1 && (
