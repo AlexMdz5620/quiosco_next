@@ -17,12 +17,13 @@ async function searchProducts(searchTerm: string) {
     return product;
 }
 
-export default async function SearchPage({ searchParams }: { searchParams: { search: string } }) {
-    const products = await searchProducts(searchParams.search);
+export default async function SearchPage({ searchParams }: { searchParams: Promise<{ search: string }> }) {
+    const { search } = await searchParams;
+    const products = await searchProducts(search);
 
     return (
         <>
-            <Heading>Resultado de búsqueda: {searchParams.search}</Heading>
+            <Heading>Resultado de búsqueda: {search}</Heading>
             <div className="flex flex-col lg:flex-row lg:justify-end gap-5">
                 <ProductSearchForm />
             </div>
